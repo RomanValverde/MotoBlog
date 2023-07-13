@@ -1,0 +1,12 @@
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'listarPeli' %}">Peliculas</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'about' %}">Acerca de mi</a></li>
+                        
+                        
+                        {% if user.is_authenticated %}
+                        
+                        <li class="nav-item"><a class="btn btn-success" href="{% url 'editarPerfil' %}">Editar {{ user.username }}</a></li>
+                        <li class="nav-item"><a class="btn btn-danger" href="{% url 'logout' %}">Logout</a></li>
+                        {% else %}
+                        <li class="nav-item"><a class="btn btn-secondary" href="{% url 'register' %}">Registro</a></li>
+                        <li class="nav-item"><a class="btn btn-primary" href="{% url 'login' %}">Login</a></li>
+                        {% endif %}
