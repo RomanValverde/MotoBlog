@@ -6,24 +6,24 @@
     border-radius: 5px;
   }
   
-  .formTitle {
+.formTitle {
     text-align: center;
     color: #333;
     font-weight: bold;
   }
   
-  .formGroup {
+.formGroup {
     margin-bottom: 15px;
   }
   
-  .formLabel {
+.formLabel {
     display: block;
     margin-bottom: 5px;
     color: #333;
     font-weight: bold;
   }
   
-  .formInput {
+.formInput {
     width: 100%;
     padding: 10px;
     font-size: 16px;
@@ -31,7 +31,7 @@
     border: 1px solid #ccc;
   }
   
-  .formButton {
+.formButton {
     display: block;
     width: 100%;
     padding: 10px;
@@ -42,3 +42,43 @@
     border-radius: 3px;
     cursor: pointer;
   }
+
+.avatarContainer {
+    display: flex;
+    align-items: center;
+  }
+  
+.avatarImage {
+    width: 50px; /* Ajusta el tamaño según tus necesidades */
+    height: 50px; /* Ajusta el tamaño según tus necesidades */
+    border-radius: 50%; /* Para que el avatar tenga forma redonda */
+    margin-right: 10px; /* Espacio entre el avatar y el campo */
+  }
+
+.deleteUserButton {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.deleteUserButton:hover {
+    background-color: #cc0000;
+}
+
+.changePasswordButton {
+  background-color: #00ccff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.changePasswordButton:hover {
+  background-color: #0099cc;
+}

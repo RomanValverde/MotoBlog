@@ -43,15 +43,17 @@ def myLogout(request):
 @login_required
 def myProfile(request):
     user = request.user
-
     if request.method == "POST":
         form = UserUpdateForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
+            form.avatar = form.cleaned_data['avatar']
             form.save()
+            messages.success(request, 'Tu perfil ha sido actualizado exitosamente.')
             return redirect('myProfile')
+        else:
+            messages.error(request, 'Hubo un error al actualizar tu perfil. Por favor, verifica los datos ingresados.')
     else:
         form = UserUpdateForm(instance=user)
-
     context = {'form': form}
     return render(request, 'profile.html', context)
 
@@ -59,14 +61,34 @@ def changePassword(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
-            user = form.save()
-            update_session_auth_hash(request, user)
-            return redirect('myProfile')
+            user = form.user
+            old_password = form.cleaned_data.get('old_password')
+            new_password = form.cleaned_data.get('new_password1')
+
+            if user.check_password(old_password):
+                user.set_password(new_password)
+                user.save()
+                update_session_auth_hash(request, user)
+                return redirect('myProfile')
+            else:
+                form.add_error('old_password', 'La contraseña actual es incorrecta.')
+
     else:
         form = PasswordChangeForm(request.user)
     
     context = {'form': form}
     return render(request, 'changePassword.html', context)
+
+@login_required
+def deleteUser(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()
+        messages.success(request, 'Tu cuenta ha sido eliminada exitosamente.')
+        logout(request)
+        return redirect('inicio')
+
+    return render(request, 'deleteUser.html')
 
 
 
