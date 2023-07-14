@@ -43,19 +43,41 @@ def myLogout(request):
 @login_required
 def myProfile(request):
     user = request.user
+    try:
+        profile = Profile.objects.get(user=user)
+    except Profile.DoesNotExist:
+        # Crea un nuevo perfil para el usuario
+        profile = Profile(user=user)
+        profile.save()
+
     if request.method == "POST":
         form = UserUpdateForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
-            form.avatar = form.cleaned_data['avatar']
             form.save()
+            # Actualiza los campos del perfil si no están vacíos
+            if form.cleaned_data['description']:
+                profile.description = form.cleaned_data['description']
+            if form.cleaned_data['website']:
+                profile.website = form.cleaned_data['website']
+            if form.cleaned_data['avatar']:
+                profile.avatar = form.cleaned_data['avatar']
+            profile.save()
             messages.success(request, 'Tu perfil ha sido actualizado exitosamente.')
             return redirect('myProfile')
         else:
             messages.error(request, 'Hubo un error al actualizar tu perfil. Por favor, verifica los datos ingresados.')
     else:
-        form = UserUpdateForm(instance=user)
-    context = {'form': form}
+        form = UserUpdateForm(instance=user, initial={
+            'description': profile.description,
+            'website': profile.website,
+            'avatar': profile.avatar
+        })
+
+    context = {'form': form, 'profile': profile}
     return render(request, 'profile.html', context)
+
+
+
 
 def changePassword(request):
     if request.method == 'POST':

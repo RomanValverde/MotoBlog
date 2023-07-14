@@ -46,14 +46,47 @@
 .avatarContainer {
     display: flex;
     align-items: center;
-  }
-  
+}
+.avatarInputContainer {
+  margin-top: 5%;
+  width: 50%;
+}
+.avatarPreview {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+.avatarImageContainer {
+  width: 50%;
+  text-align: center;
+}
 .avatarImage {
-    width: 50px; /* Ajusta el tamaño según tus necesidades */
-    height: 50px; /* Ajusta el tamaño según tus necesidades */
-    border-radius: 50%; /* Para que el avatar tenga forma redonda */
-    margin-right: 10px; /* Espacio entre el avatar y el campo */
-  }
+  max-width: 100%;
+  height: auto;
+}
+
+.formGroup {
+    margin-bottom: 20px;
+}
+
+.customButton {
+  /* Copia los estilos de formButton */
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.customButton:hover {
+  /* Copia los estilos hover de formButton */
+  background-color: #45a049;
+}
 
 .deleteUserButton {
     background-color: #ff0000;
@@ -81,4 +114,19 @@
 
 .changePasswordButton:hover {
   background-color: #0099cc;
+}
+
+.formSectionTitleContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10%;
+  margin-top: 10%;
+}
+
+.buttonsContainer {
+  margin-left: auto;
+}
+
+.buttonsContainer a {
+  margin-left: 10px;
 }

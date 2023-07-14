@@ -17,7 +17,7 @@
             {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
                 {% endfor %}
             </ul>
             {% endif %}
@@ -32,8 +32,14 @@
             <div class="formGroup">
                 <label for="{{ form.avatar.id_for_label }}" class="formLabel">Avatar:</label>
                 <div class="avatarContainer">
-                    {{ form.avatar }}
-                    <img src="{{ profile.avatar.url }}" alt="Avatar" class="avatarImage">
+                    {% if profile.avatar %}
+                        <div class="avatarImageContainer">
+                            <img src="{{ profile.avatar.url }}" alt="Avatar" class="avatarImage">
+                        </div>
+                    {% endif %}                    
+                </div>
+                <div class="avatarInputContainer">
+                    <input type="file" name="avatar" accept="image/*" id="{{ form.avatar.id_for_label }}">
                 </div>
             </div>
             <div class="formGroup">
@@ -53,12 +59,17 @@
                 {{ form.website }}
             </div>
             <button type="submit" class="formButton">Guardar cambios</button>
+            <a href="{% url 'inicio' %}" class="formButton customButton">Volver a la pagina de inicio</a>
             {{ form.non_field_errors }}
         </form>
         <hr class="formSeparator">
-        <h3 class="formSectionTitle" style="margin-bottom: 20px;">Opciones de Perfil</h3>        
-        <a href="{% url 'changePassword' %}" class="changePasswordButton">Cambiar Contraseña</a></p>
-        <a href="{% url 'deleteUser' %}" class="deleteUserButton">Eliminar usuario</a>
+        <h3 class="formSectionTitle">Configuración de Privacidad</h3>
+        <div class="formSectionTitleContainer">            
+            <div class="buttonsContainer">
+                <a href="{% url 'changePassword' %}" class="changePasswordButton">Cambiar Contraseña</a>
+                <a href="{% url 'deleteUser' %}" class="deleteUserButton">Eliminar usuario</a>
+            </div>
+        </div>
     </div>
 </body>
 </html>
