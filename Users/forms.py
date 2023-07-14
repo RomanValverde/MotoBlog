@@ -19,3 +19,7 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'first_name', 'last_name', 'avatar', 'description', 'website']
+
+class UserLoginForm(forms.Form):
+    username = forms.CharField(label="Usuario", widget=forms.TextInput(attrs={'class': 'customInput'}))
+    password = forms.CharField(label="Contraseña", widget=forms.PasswordInput(attrs={'class': 'customInput'}))

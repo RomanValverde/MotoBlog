@@ -10,11 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOTOBLOG</title>
 </head>
-<body>
+<body class="loginBody">
     <div class="containerForm">
-        <form action="" method="POST" class="formRegister">
+        <form action="" method="POST" class="formLogin">
             {% csrf_token %}
-            <h3 class="formTitle">Registro MOTOBLOG</h3>
+            <h3 class="formTitle">REGISTRO MOTOBLOG</h3>
             <div class="formGroup">
                 <label for="{{ form.username.id_for_label }}" class="formLabel">Usuario:</label>
                 {{ form.username }}
@@ -35,5 +35,6 @@
         </form>
     </div>
 </body>
+
 </html>
 

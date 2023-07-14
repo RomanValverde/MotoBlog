@@ -1,109 +1,139 @@
+body {
+  background-color: #222;
+}
+.loginBody, .registerBody {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #222;
+}
 .containerForm {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f2f2f2;
-    border-radius: 5px;
-  }
-  
+  max-width: 500px;
+  padding: 30px;
+  background-color: #333;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  width: -webkit-fill-available;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
+
+
 .formTitle {
-    text-align: center;
-    color: #333;
-    font-weight: bold;
-  }
-  
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
 .formGroup {
-    margin-bottom: 15px;
-  }
-  
+  margin-bottom: 20px;
+}
+
 .formLabel {
-    display: block;
-    margin-bottom: 5px;
-    color: #333;
-    font-weight: bold;
-  }
-  
+  display: block;
+  margin-bottom: 5px;
+  color: #fff;
+  font-weight: bold;
+}
+
 .formInput {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 3px;
-    border: 1px solid #ccc;
-  }
-  
-.formButton {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
-    font-size: 16px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-
-.avatarContainer {
-    display: flex;
-    align-items: center;
-}
-.avatarInputContainer {
-  margin-top: 5%;
-  width: 50%;
-}
-.avatarPreview {
-    width: 100px;
-    height: 100px;
-    margin-right: 20px;
-}
-.avatarImageContainer {
-  width: 50%;
-  text-align: center;
-}
-.avatarImage {
-  max-width: 100%;
-  height: auto;
-}
-
-.formGroup {
-    margin-bottom: 20px;
-}
-
-.customButton {
-  /* Copia los estilos de formButton */
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
+  width: 100%;
+  padding: 10px;
   font-size: 16px;
-  margin: 4px 2px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  background-color: #444;
+  color: #fff;
+}
+
+.customInput {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  background-color: #444;
+  color: #fff;
+}
+
+
+.formButton {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 3px;
   cursor: pointer;
 }
 
+.formButton:hover {
+  background-color: #0056b3;
+}
+
+.avatarContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.avatarInputContainer {
+  margin-left: 20px;
+}
+
+.avatarPreview {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+
+.avatarImage {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.customButton {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 10px 20%;
+  border-radius: 5px;
+  font-size: 16px;
+  text-decoration: none;
+}
+
 .customButton:hover {
-  /* Copia los estilos hover de formButton */
-  background-color: #45a049;
+  background-color: #c82333;
 }
 
 .deleteUserButton {
-    background-color: #ff0000;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    text-decoration: none;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  text-decoration: none;
 }
 
 .deleteUserButton:hover {
-    background-color: #cc0000;
+  background-color: #cc0000;
 }
 
 .changePasswordButton {
-  background-color: #00ccff;
+  background-color: #ffc107;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -113,20 +143,6 @@
 }
 
 .changePasswordButton:hover {
-  background-color: #0099cc;
+  background-color: #e0a800;
 }
 
-.formSectionTitleContainer {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10%;
-  margin-top: 10%;
-}
-
-.buttonsContainer {
-  margin-left: auto;
-}
-
-.buttonsContainer a {
-  margin-left: 10px;
-}
