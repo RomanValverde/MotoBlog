@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        {% load static %}
+        <link href="{% static 'Users/css/styles.css' %}" rel="stylesheet"/>
+        <link href="{% static 'Users/css/main.css' %}" rel="stylesheet"/>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Perfil de Usuario</title>
+    </head>
+    <body>
+        <div class="containerForm">
+            <form method="POST" class="formLogin">
+                {% csrf_token %}
+                <h2 class="formTitle">Perfil de Usuario</h2>
+                <div class="formGroup">
+                    <label for="{{ user_form.username.id_for_label }}" class="formLabel">Usuario:</label>
+                    {{ user_form.username }}
+                </div>
+                <div class="formGroup">
+                    <label for="{{ user_form.email.id_for_label }}" class="formLabel">Correo electrónico:</label>
+                    {{ user_form.email }}
+                </div>
+                <div class="formGroup">
+                    <label for="{{ user_form.image.id_for_label }}" class="formLabel">Imagen:</label>
+                    {{ user_form.avatar }}
+                </div>
+                <div class="formGroup">
+                    <label for="{{ user_form.first_name.id_for_label }}" class="formLabel">Nombre:</label>
+                    {{ user_form.first_name }}
+                </div>
+                <div class="formGroup">
+                    <label for="{{ user_form.description.id_for_label }}" class="formLabel">Descripción:</label>
+                    {{ user_form.description }}
+                </div>
+                <div class="formGroup">
+                    <label for="{{ user_form.website.id_for_label }}" class="formLabel">Enlace a página web:</label>
+                    {{ user_form.website }}
+                </div>
+                <button type="submit" class="formButton">Guardar cambios</button>
+                    {{ form.non_field_errors }}
+            </form>
+            <hr class="formSeparator">
+            <h3 class="formSectionTitle">Opciones de Perfil</h3>
+            <p class="formCentered"><a href="{% url 'changePassword' %}" class="formLink">Cambiar Contraseña</a></p>
+            <p class="formCentered"><a href="{% url 'inicio' %}" class="formLink">Eliminar perfil</a></p>
+        </div>
+    </body>
+    </html>
+    

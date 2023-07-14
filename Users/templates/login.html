@@ -12,23 +12,25 @@
 </head>
 <body>
     <div class="containerForm">
-        <form action="" method="POST" class="formLogin"> {% csrf_token %}
-            <h3 style="color:white; font-weight: bold; margin-bottom: 30px; display:flex; justify-content: center; align-items: center">LOGIN MOTOBLOG</h3>
-            <div>
-                <input name="user" type="text" placeholder="User" class="inputLogin">
+        <form action="" method="POST" class="formLogin">
+            {% csrf_token %}
+            <h3 class="formTitle">LOGIN MOTOBLOG</h3>
+            <div class="formGroup">
+                <label for="user" class="formLabel">Usuario:</label>
+                <input name="user" type="text" placeholder="Usuario" class="formInput">
             </div>
-            <div>
-                <input name="password" type="password" placeholder="Password" class="inputLogin">
+            <div class="formGroup">
+                <label for="password" class="formLabel">Contraseña:</label>
+                <input name="password" type="password" placeholder="Contraseña" class="formInput">
             </div>
-            <div>
-                <button class="btn btn-primary" type="submit">Login</button>
-            </div>
+            <button type="submit" class="formButton">Login</button>
             {% if error %}
-            <p style="color: red">{{error}}</p>
+            <p class="formError">{{ error }}</p>
             {% endif %}
-            <p class="text-center" style="color: white">¿Aún no tienes una cuenta?</p>
+            <p class="text-center">¿Aún no tienes una cuenta?</p>
             <p class="text-center"><a href="{% url 'myRegistry' %}">Registrate</a></p>
         </form>
     </div>    
 </body>
 </html>
+
