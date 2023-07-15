@@ -8,7 +8,8 @@ from django.contrib.auth import login, logout, authenticate , update_session_aut
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
-
+from django.conf import settings
+import os
 # Create your views here.
 
 def myLogin(request):
@@ -61,6 +62,10 @@ def myProfile(request):
                 profile.website = form.cleaned_data['website']
             if form.cleaned_data['avatar']:
                 profile.avatar = form.cleaned_data['avatar']
+            if form.cleaned_data['dateOfBirth']:
+                profile.dateOfBirth = form.cleaned_data['dateOfBirth']
+            if form.cleaned_data['country']:
+                profile.country = form.cleaned_data['country']
             profile.save()
             messages.success(request, 'Tu perfil ha sido actualizado exitosamente.')
             return redirect('myProfile')
@@ -70,7 +75,9 @@ def myProfile(request):
         form = UserUpdateForm(instance=user, initial={
             'description': profile.description,
             'website': profile.website,
-            'avatar': profile.avatar
+            'avatar': profile.avatar,
+            'dateOfBirth': profile.dateOfBirth,
+            'country': profile.country
         })
 
     context = {'form': form, 'profile': profile}
@@ -78,7 +85,7 @@ def myProfile(request):
 
 
 
-
+@login_required
 def changePassword(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
@@ -105,11 +112,14 @@ def changePassword(request):
 def deleteUser(request):
     if request.method == 'POST':
         user = request.user
+        if user.profile.avatar:            
+            file_path = os.path.join(settings.MEDIA_ROOT, str(user.profile.avatar))
+            if os.path.isfile(file_path):                
+                os.remove(file_path)        
         user.delete()
         messages.success(request, 'Tu cuenta ha sido eliminada exitosamente.')
         logout(request)
         return redirect('inicio')
-
     return render(request, 'deleteUser.html')
 
 

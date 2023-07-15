@@ -9,28 +9,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuario</title>
 </head>
-<body class="loginBody">
-    <div class="containerForm" style="margin-top: auto">
-        <form method="POST" enctype="multipart/form-data" class="formLogin">
-            {% csrf_token %}
+<body class="">
+    <form method="POST" enctype="multipart/form-data" class="formLogin">
+        {% csrf_token %}
+        <div class="containerFormAvatar">
             <h2 class="formTitle">Perfil de Usuario</h2>
             {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                {% endfor %}
-            </ul>
+                <div id="popup" class="popup">                
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
             {% endif %}
-            <div class="formGroup">
-                <label for="{{ form.username.id_for_label }}" class="formLabel">Usuario:</label>
-                {{ form.username }}
-            </div>
-            <div class="formGroup">
-                <label for="{{ form.email.id_for_label }}" class="formLabel">Correo electrónico:</label>
-                {{ form.email }}
-            </div>            
-            <div class="formGroup">
-                <label for="{{ form.avatar.id_for_label }}" class="formLabel">Avatar:</label>
+            <div class="formGroup">                
                 <div class="avatarContainer">
                     {% if profile.avatar %}
                         <div class="avatarImageContainer">
@@ -42,34 +35,72 @@
                     <input type="file" name="avatar" accept="image/*" id="{{ form.avatar.id_for_label }}">
                 </div>
             </div>
-            <div class="formGroup">
+        </div>
+
+        <div class="containerFormProfile">            
+            <div class="formGroupProfile">
+                <label for="{{ form.username.id_for_label }}" class="formLabel">Usuario:</label>
+                {{ form.username }}
+            </div>
+            <div class="formGroupProfile">
                 <label for="{{ form.first_name.id_for_label }}" class="formLabel">Nombre:</label>
                 {{ form.first_name }}
             </div>
-            <div class="formGroup">
+            <div class="formGroupProfile">
                 <label for="{{ form.last_name.id_for_label }}" class="formLabel">Apellido:</label>
                 {{ form.last_name }}
             </div>
-            <div class="formGroup">
-                <label for="{{ form.description.id_for_label }}" class="formLabel">Descripción:</label>
-                {{ form.description }}
+            <div class="formGroupProfile">
+                <label for="{{ form.email.id_for_label }}" class="formLabel">Correo electrónico:</label>
+                {{ form.email }}
             </div>
-            <div class="formGroup">
+            <div class="formGroupProfile">
+                <label for="{{ form.country.id_for_label }}" class="formLabel">País:</label>
+                {{ form.country }}
+            </div>  
+            <div class="formGroupProfileDescription">
+                <label for="{{ form.description.id_for_label }}" class="formLabel">Descripción:</label>                
+                <div class="inputContainerDescription">
+                    <textarea name="{{ form.description.name }}" placeholder="{{ profile.description }}" maxlength="200" class="customTextarea"></textarea>
+                </div>                
+            </div>                                     
+            <div class="formGroupProfileBirthdate">
+                <label for="{{ form.dateOfBirth.id_for_label }}" class="formLabel">Fecha de nacimiento:</label>
+                <span class="currentDateOfBirth" style="color: white;">( <strong>{{ form.dateOfBirth.value }}</strong> )</span>
+                <input type="date" name="{{ form.dateOfBirth.name }}" placeholder="Fecha de nacimiento" class="customDateInput">
+            </div>
+            <div class="formGroupProfile">
                 <label for="{{ form.website.id_for_label }}" class="formLabel">Enlace a página web:</label>
                 {{ form.website }}
-            </div>
-            <button type="submit" class="formButton">Guardar cambios</button>
-            <a href="{% url 'inicio' %}" class="formButton customButton">Volver a la pagina de inicio</a>
-            {{ form.non_field_errors }}
-        </form>
-        <hr class="formSeparator">
-        <h3 class="formSectionTitle">Configuración de Privacidad</h3>
-        <div class="formSectionTitleContainer">            
-            <div class="buttonsContainer">
-                <a href="{% url 'changePassword' %}" class="changePasswordButton">Cambiar Contraseña</a>
-                <a href="{% url 'deleteUser' %}" class="deleteUserButton">Eliminar usuario</a>
-            </div>
+            </div>     
+        </div>
+        <div class="formGroup">
+            <button type="submit" class="formButtonProfile">Guardar cambios</button>
+        </div>
+        <div class="formGroup">
+            <a href="{% url 'inicio' %}" class="formButtonProfile customButton">Volver a la pagina de inicio</a>
+        </div>
+        {{ form.non_field_errors }}
+    </form>
+    <hr class="formSeparator">
+    <h3 class="formSectionTitle">Configuración de Privacidad</h3>
+    <div class="formSectionTitleContainer">            
+        <div class="buttonsContainer">
+            <a href="{% url 'changePassword' %}" class="changePasswordButton">Cambiar Contraseña</a>
+            <a href="{% url 'deleteUser' %}" class="deleteUserButton">Eliminar usuario</a>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var popup = document.getElementById('popup');
+
+            if (popup) {
+                setTimeout(function () {
+                    popup.style.display = 'none';
+                }, 3000);
+            }
+        });
+    </script>      
 </body>
 </html>

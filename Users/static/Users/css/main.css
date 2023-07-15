@@ -21,12 +21,38 @@ body {
   align-items: center;  
 }
 
-
+.containerFormProfile {
+  background-color: #333;
+  border-radius: 5px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+  color: black;
+  width: -webkit-fill-available;  
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  padding-left: 1%;
+}
+.containerFormAvatar{
+  background-color: #333;
+  border-radius: 5px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+  color: #fff;
+  width: -webkit-fill-available;  
+  display: flex;
+  flex-direction: column;
+  
+}
+.center-text {
+  text-align: center;
+}
+.messages {
+  list-style-type: none;
+}
 .formTitle {
   text-align: center;
   color: #fff;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-top: 1%;  
 }
 
 .formGroup {
@@ -34,10 +60,10 @@ body {
 }
 
 .formLabel {
-  display: block;
+  display: inline;
   margin-bottom: 5px;
   color: #fff;
-  font-weight: bold;
+  font-weight: lighter;
 }
 
 .formInput {
@@ -59,7 +85,17 @@ body {
   background-color: #444;
   color: #fff;
 }
-
+.formButtonProfile {
+  /* display: block;
+  width: 100%; */
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
 
 .formButton {
   display: block;
@@ -80,7 +116,9 @@ body {
 .avatarContainer {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 1%;
+  margin-left: 1%;
+  margin-top: 1%;
 }
 
 .avatarInputContainer {
@@ -108,7 +146,7 @@ body {
   background-color: #dc3545;
   color: #fff;
   border: none;
-  padding: 10px 20%;
+  /* padding: 10px 20%; */
   border-radius: 5px;
   font-size: 16px;
   text-decoration: none;
@@ -146,3 +184,178 @@ body {
   background-color: #e0a800;
 }
 
+.inputContainer {
+  display: flex;
+  align-items: center;
+}
+
+.inputContainer input {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.popup {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: center;
+  margin-top: 2%;
+}
+
+.popup-content {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #fff;
+  cursor: pointer;
+}
+.formGroupProfile {
+  margin-bottom: 20px;
+  display: flex;
+  /* align-items: flex-start;
+  justify-content: space-between;
+  width: 100%; */
+  flex-direction: column;
+}
+.formGroupProfile input[type="text"],
+.formGroupProfile input[type="email"],
+.formGroupProfile input[type="url"],
+.formGroupProfile textarea {
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    padding: 5px 10px;
+    border-radius: 5px;    
+    font-family: 'Arial', sans-serif;
+    max-width: fit-content;
+}
+.formGroupProfileDescription .inputContainerDescription textarea {
+  width: 50%;
+  height: 150px;
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-family: 'Arial', sans-serif;
+  text-align: left;
+  resize: vertical;
+}
+
+.formGroupProfileBirthdate {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+
+.formGroupProfileBirthdate input {
+  margin-top: 5px;
+  max-width: fit-content;
+}
+.customDateInput {
+  background-color: white;
+  color: rgb(0, 0, 0);
+  border: 2px solid black;
+  padding: 5px 10px;
+  border-radius: 5px;  
+  font-family: 'Arial', sans-serif; /* Reemplaza 'Arial' con la fuente que desees */
+  filter: invert() 
+}
+.formGroupRegister input[type="text"],
+.formGroupRegister input[type="email"],
+.formGroupRegister input[type="password"] {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 2px solid white;    
+}
+.containerFormRegister {
+  max-width: 500px;
+  padding: 30px;
+  background-color: #333;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  color: #fff;  
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.formGroupRegister {
+  margin-bottom: 20px;
+  display: flex;
+  /* align-items: flex-start;
+  justify-content: space-between;
+  width: 100%; */
+  flex-direction: column;
+}
+
+.formLabelRegister {
+  /* display: inline; */
+  margin-bottom: 5px;
+  color: #fff;
+  font-weight: lighter;
+  /* flex-basis: 30%;
+  margin-right: -10%; */
+}
+
+.formInputRegister {
+  width: 70%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 3px;  
+  color: rgb(0, 0, 0);
+  flex-basis: 70%;
+  text-align: right
+}
+
+.formButtonRegister {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.customTextarea {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid black;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-family: 'Arial', sans-serif;
+  height: 150px;  
+  resize: vertical, horizontal;
+}
+
+
+.formButtonRegister:hover {
+  background-color: #0056b3;
+}
+
+.customAccountText {
+  text-align: center;
+  margin-top: 5%;
+}
