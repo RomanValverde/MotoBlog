@@ -42,6 +42,10 @@ body {
   flex-direction: column;
   
 }
+
+.formSectionTitleContainer{
+  margin-bottom: 5%;
+}
 .center-text {
   text-align: center;
 }
@@ -119,10 +123,57 @@ body {
   margin-bottom: 1%;
   margin-left: 1%;
   margin-top: 1%;
+  justify-content: center;
 }
+
+input[type="file"].custom-file-input {
+  color: transparent;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+input[type="file"]::before {
+  content: 'Seleccionar archivo';
+  display: grid;
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  justify-content: center;
+  margin-top: 10%;
+  margin-bottom: -10%;
+}
+
+input[type="file"]:hover::before {
+  background-color: #0056b3;
+}
+
+.custom-file-input::before {
+  content: 'Cambiar imagen';
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.custom-file-input:hover::before {
+  background-color: #0056b3;
+}
+
 
 .avatarInputContainer {
   margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .avatarPreview {
@@ -350,7 +401,12 @@ body {
   resize: vertical, horizontal;
 }
 
+.buttonsContainer {
+  height: 100%;
+  text-align: center;
+  padding-top: 1%;
 
+}
 .formButtonRegister:hover {
   background-color: #0056b3;
 }

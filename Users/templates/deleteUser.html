@@ -7,13 +7,13 @@
     <script src="{% static 'Users/js/scripts.js' %}"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eliminar Usuario</title>
+    <title>Delete User</title>
 </head>
 <body class="loginBody">
     <div class="containerForm">
         <form method="POST" class="formLogin">
             {% csrf_token %}
-            <h2 class="formTitle">Eliminar Usuario</h2>
+            <h2 class="formTitle">Delete User</h2>
             <p>¿Estás seguro de que deseas eliminar tu cuenta de usuario? Esta acción no se puede deshacer y se perderán todos los datos asociados.</p>
             <button type="submit" class="formButton">Confirmar Eliminación</button>
         </form>

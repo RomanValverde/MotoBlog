@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.conf import settings
 import os
+import shutil
 # Create your views here.
 
 def myLogin(request):
@@ -112,10 +113,11 @@ def changePassword(request):
 def deleteUser(request):
     if request.method == 'POST':
         user = request.user
-        if user.profile.avatar:            
-            file_path = os.path.join(settings.MEDIA_ROOT, str(user.profile.avatar))
-            if os.path.isfile(file_path):                
-                os.remove(file_path)        
+        if user.profile.avatar:
+            # Obtiene la ruta de la carpeta del usuario
+            folder_path = os.path.dirname(user.profile.avatar.path)
+            # Elimina la carpeta del usuario y todos sus contenidos
+            shutil.rmtree(folder_path)
         user.delete()
         messages.success(request, 'Tu cuenta ha sido eliminada exitosamente.')
         logout(request)
