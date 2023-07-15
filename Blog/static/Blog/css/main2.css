@@ -1,0 +1,7 @@
+.small-avatar {
+    width: 32px; /* Ajusta el ancho deseado */
+    height: 32px; /* Ajusta la altura deseada */
+    border-radius: 50%; /* Aplica un borde redondeado */
+    margin-right: 8px; /* Agrega un margen derecho para separar del texto */
+  }
+  
