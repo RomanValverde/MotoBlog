@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <link href="{% static 'Users/css/styles.css' %}" rel="stylesheet"/>
+        <link href="{% static 'Users/css/main.css' %}" rel="stylesheet"/>
+        <script src="{% static 'Users/js/scripts.js' %}"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Delete Avatar</title>
+    </head>
+    <body class="loginBody">
+        <div class="containerForm">
+            <form method="POST" class="formLogin">
+                {% csrf_token %}
+                <h2 class="formTitle">Delete Avatar</h2>
+                <p>¿Estás seguro de que deseas eliminar tu foto de perfil?</p>
+                <button type="submit" class="formButton">Confirmar Eliminación</button>
+            </form>
+        </div>
+    </body>

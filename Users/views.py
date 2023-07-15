@@ -99,13 +99,13 @@ def changePassword(request):
                 user.set_password(new_password)
                 user.save()
                 update_session_auth_hash(request, user)
+                messages.success(request, 'La contraseña ha sido cambiada exitosamente.')
                 return redirect('myProfile')
             else:
                 form.add_error('old_password', 'La contraseña actual es incorrecta.')
-
     else:
         form = PasswordChangeForm(request.user)
-    
+
     context = {'form': form}
     return render(request, 'changePassword.html', context)
 
@@ -113,18 +113,27 @@ def changePassword(request):
 def deleteUser(request):
     if request.method == 'POST':
         user = request.user
-        if user.profile.avatar:
-            # Obtiene la ruta de la carpeta del usuario
-            folder_path = os.path.dirname(user.profile.avatar.path)
-            # Elimina la carpeta del usuario y todos sus contenidos
+        if user.profile.avatar:            
+            folder_path = os.path.dirname(user.profile.avatar.path)            
             shutil.rmtree(folder_path)
-        user.delete()
-        messages.success(request, 'Tu cuenta ha sido eliminada exitosamente.')
+        user.delete()        
         logout(request)
         return redirect('inicio')
     return render(request, 'deleteUser.html')
 
+@login_required
+def deleteAvatar(request):
+    user = request.user
+    profile = user.profile
 
-
-
-
+    if request.method == 'POST':
+        if profile.avatar:
+            folder_path = os.path.dirname(profile.avatar.path)            
+            os.remove(profile.avatar.path)
+            profile.avatar = None
+            profile.save()
+            messages.success(request, 'Tu foto de perfil ha sido eliminada exitosamente.')
+        else:
+            messages.error(request, 'No tienes una foto de perfil para eliminar.')
+        return redirect('myProfile')
+    return render(request, 'deleteAvatar.html')

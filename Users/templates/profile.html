@@ -40,7 +40,7 @@
         <div class="container">
             <h2 class="formTitle">Perfil de Usuario</h2>
             {% if messages %}
-                <div id="popup" class="popup">                
+                <div id="popup" class="popup fade-out">                
                     <ul class="messages">
                         {% for message in messages %}
                         <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
@@ -56,9 +56,18 @@
                         {% if profile.avatar %}
                             <div class="avatarImageContainer">
                                 <img src="{{ profile.avatar.url }}" alt="Avatar" class="avatarImage">
-                            </div>
+                            </div>                            
+                        {% else %}
+                            <div class="avatarImageContainer">
+                                <img src="{% static 'Users/img/default.png' %}" alt="Default Avatar" class="avatarImage">
+                            </div>    
                         {% endif %}                    
                     </div>
+                    {% if profile.avatar %}
+                    <div class="avatarInputContainer">
+                        <a href="{% url 'deleteAvatar' %}" class="deleteAvatarButton">Eliminar foto</a>
+                    </div>
+                    {% endif %}
                     <div class="avatarInputContainer">
                         <input type="file" name="avatar" accept="image/*" class="custom-file-input">
                     </div>
@@ -121,14 +130,17 @@
                 </div>
             </div>
         </div>
-    </form>
+    </form>    
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var popup = document.getElementById('popup');
 
             if (popup) {
                 setTimeout(function () {
-                    popup.style.display = 'none';
+                    popup.classList.remove('fade-out');
+                    setTimeout(function (){
+                        popup.remove();
+                    }, 1);
                 }, 3000);
             }
         });
