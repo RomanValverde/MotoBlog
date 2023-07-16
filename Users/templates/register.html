@@ -12,29 +12,34 @@
 </head>
 <body class="loginBody">
     <div class="containerFormRegister">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+        
         <form action="" method="POST" class="formLogin">
             {% csrf_token %}
             <h3 class="formTitle">Create your free account</h3>
-            <div class="formGroupRegister">
-                <label for="{{ form.username.id_for_label }}" class="formLabelRegister">Usuario:</label>
-                <input type="{{ form.username.field.widget.input_type }}" name="{{ form.username.name }}" placeholder="Ingrese su usuario" class="">
-            </div>
-            <div class="formGroupRegister">
-                <label for="{{ form.email.id_for_label }}" class="formLabelRegister">Correo electrónico:</label>
-                <input type="{{ form.email.field.widget.input_type }}" name="{{ form.email.name }}" placeholder="Ingrese su correo electrónico" class="">                
-            </div>
-            <div class="formGroupRegister">
-                <label for="{{ form.password1.id_for_label }}" class="formLabelRegister">Contraseña:</label>                
-                <input type="password" name="{{ form.password1.name }}" placeholder="Ingrese su contraseña" class="">
-            </div>
-            <div class="formGroupRegister">
-                <label for="{{ form.password2.id_for_label }}" class="formLabelRegister">Confirmar contraseña:</label>
-                <input type="{{ form.password2.field.widget.input_type }}" name="{{ form.password2.name }}" placeholder="Confirme su contraseña" class="">
-            </div>
+            
+            {% for field in form %}
+                <div class="formGroupRegister">
+                    <label for="{{ field.id_for_label }}" class="formLabelRegister">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger">{{ error }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            {% endfor %}
+            
             <button type="submit" class="formButton">Registrate</button>
         </form>
     </div>
+    
 </body>
 </html>
-
-

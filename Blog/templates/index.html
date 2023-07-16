@@ -33,9 +33,13 @@
                                 <img src="{% static 'Users/img/default.png' %}" alt="Default Avatar" class="profile-image small-avatar">
                             {% endif %}
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                            <li><a class="dropdown-item" href="{% url 'myProfile' %}">Editar Perfil</a></li>
-                            <li><a class="dropdown-item" href="{% url 'myLogout' %}">Logout</a></li>
+                        <ul class="dropdown-menu dropdown-menu-dark bg-dark" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="{% url 'myProfile' %}">Editar Perfil</a></li>                                                       
+                            <li><a class="dropdown-item" href="{% url 'changePassword' %}">Cambiar contraseña</a></li>
+                            <div class="dropdown-divider"></div>
+                            <li><a class="dropdown-item" href="{% url 'deleteUser' %}">Eliminar cuenta</a></li>
+                            <div class="dropdown-divider"></div>
+                            <li><a class="dropdown-item fw-bolder" style="color:red" href="{% url 'myLogout' %}">Logout</a></li> 
                         </ul>
                     </li>
                     {% else %}

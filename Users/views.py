@@ -31,12 +31,17 @@ def myRegistry(request):
     if request.method == "POST":
         userCreate = CustomUserCreationForm(request.POST)
         if userCreate.is_valid():
-            userCreate.save()
+            userCreate.save()            
             return redirect('../login')
+        else:
+            errors = userCreate.errors.as_data()
+            if '__all__' in errors:
+                messages.error(request, errors['__all__'][0].message)
     else:
         userCreate = CustomUserCreationForm()
     
     return render(request, 'register.html', {'form': userCreate})
+
 
 def myLogout(request):
     logout(request)
@@ -47,16 +52,14 @@ def myProfile(request):
     user = request.user
     try:
         profile = Profile.objects.get(user=user)
-    except Profile.DoesNotExist:
-        # Crea un nuevo perfil para el usuario
+    except Profile.DoesNotExist:        
         profile = Profile(user=user)
         profile.save()
 
     if request.method == "POST":
         form = UserUpdateForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
-            form.save()
-            # Actualiza los campos del perfil si no están vacíos
+            form.save()            
             if form.cleaned_data['description']:
                 profile.description = form.cleaned_data['description']
             if form.cleaned_data['website']:
