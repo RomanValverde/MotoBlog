@@ -1,0 +1,46 @@
+{% extends "pages.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <header class="text-center mb-4">
+                            <h2 class="fw-bolder">Editar Post</h2>
+                        </header>
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="mb-4">
+                                <label for="id_titulo" class="form-label text-primary">Título:</label>
+                                {{ form.titulo }}
+                            </div>
+                            <div class="mb-4">
+                                <label for="id_subtitulo" class="form-label text-primary">Subtítulo:</label>
+                                {{ form.subtitulo }}
+                            </div>
+                            {% if form.imagen.errors %}
+                            <div class="mb-4">
+                                <label for="id_imagen" class="form-label text-primary">Imagen:</label>
+                                {{ form.imagen }}
+                                <small class="text-danger">{{ form.imagen.errors }}</small>
+                            </div>
+                            {% else %}
+                            <div class="mb-4">
+                                <label for="id_imagen" class="form-label text-primary">Imagen:</label>
+                                {{ form.imagen }}
+                            </div>
+                            {% endif %}
+                            <div class="mb-4">
+                                <label for="id_cuerpo" class="form-label text-primary">Cuerpo:</label>
+                                {{ form.cuerpo }}
+                            </div>
+                            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

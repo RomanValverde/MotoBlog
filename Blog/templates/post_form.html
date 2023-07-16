@@ -1,0 +1,59 @@
+{% extends "index.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
+
+<!-- Page content-->
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <header class="text-center mb-4">
+                        <h2 class="fw-bolder">Crear Post</h2>
+                    </header>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <label for="id_titulo" class="form-label text-primary">Título:</label>
+                            {{ form.titulo }}
+                        </div>
+                        <div class="mb-4">
+                            <label for="id_subtitulo" class="form-label text-primary">Subtítulo:</label>
+                            {{ form.subtitulo }}
+                        </div>
+                        <div class="mb-4">
+                          <label for="id_imagen" class="form-label text-primary">Imagen:</label>
+                          {{ form.imagen }}
+                        </div>
+                        <div class="mb-4">
+                            <label for="id_cuerpo" class="form-label text-primary">Cuerpo:</label>
+                            {{ form.cuerpo }}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('#id_cuerpo').summernote({
+            height: 300,  // Adjust the height as needed
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline']],
+                ['para', ['ul', 'ol']],
+                ['insert', ['link']],
+            ],
+            callbacks: {
+                onChange: function(contents, $editable) {
+                    // Update the content in real-time, if necessary
+                    $('#id_cuerpo').val(contents);
+                }
+            }
+        });
+    });
+</script>
+
+{% endblock %}

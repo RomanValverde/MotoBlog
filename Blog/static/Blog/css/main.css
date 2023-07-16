@@ -1,0 +1,29 @@
+.main-body-flexbox {
+  background-color: var(--main-body-bg-color);
+  color: var(--main-body-text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-footer{
+  background-color: var(--main-footer-bg-color);
+  color: var(--main-footer-text-color); 
+  text-align: center;
+  padding: 5px;
+  margin-top: auto;
+}
+
+.main-card-text{
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+  
+.small-avatar {
+  width: 32px; /* Ajusta el ancho deseado */
+  height: 32px; /* Ajusta la altura deseada */
+  border-radius: 50%; /* Aplica un borde redondeado */
+  margin-right: 8px; /* Agrega un margen derecho para separar del texto */
+}

@@ -1,0 +1,35 @@
+{% extends "pages.html" %}
+{% load static %}
+{% block content %}
+
+{% if user.is_authenticated %}
+<header class="py-2 bg-light border-bottom mb-4">
+  <div class="container">
+      <div class="text-center my-3">
+            <p class="lead">Al estar logueado puedes realizar las siguientes acciones sobre el post:</p>
+            <a href="{% url 'post_update' post.pk %}" class="btn btn-warning">Editar</a>
+            <a href="{% url 'post_delete' post.pk %}" class="btn btn-danger">Eliminar</a>
+      </div> 
+  </div>
+</header>
+{% endif %}
+
+  <div class="container py-4">
+    <article>
+      <header>
+        <h1 class="text-primary">{{ post.titulo }}</h1>
+        <p class="lead text-muted">{{ post.subtitulo }}</p>
+        <img src="{{ post.imagen.url }}" alt="Imagen del post" class="img-fluid">
+      </header>
+      <div class="small text-muted">Creado el {{ post.fecha }} por {{ post.autor }}</div>
+      <main class="d-flex flex-column align-items-center">
+
+        <p class="card-text">{{ post.cuerpo|safe }}</p>
+
+          <div>
+            <a href="{% url 'post_list' %}" class="btn btn-primary">Volver al inicio</a>
+          </div>
+      </main>
+    </article>
+  </div>
+{% endblock %}

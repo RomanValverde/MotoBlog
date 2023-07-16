@@ -4217,6 +4217,7 @@ textarea.form-control-lg {
 
 .card-text:last-child {
   margin-bottom: 0;
+  max-lines: 3;
 }
 
 .card-link + .card-link {
